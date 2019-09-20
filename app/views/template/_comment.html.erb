@@ -1,0 +1,12 @@
+
+<div class="cmtjs comment-close" style="opacity: 0">
+<%  @comment.each do |comment| %>
+  <% if comment.task_id == task.id %>
+     <p><strong><%= comment.name %></strong> : <%= comment.description %> </p>
+     <% else %>
+     
+  <% end %>
+  
+
+<% end %>
+</div>

@@ -1,0 +1,47 @@
+<% @task.each do |task| %>
+  <div class="block">
+  <div class="head-line">
+  <p class="header-titile"><span class="subject"><%= task.subject %></span><span class="time"><time><%= task.created_at.to_date.strftime("%d %B , %Y") %></time></span></p>
+  <%= link_to 'изменить', edit_task_path(task) , :class => "a-change" %>
+   <%= link_to 'add comment', task_path(task) ,  :class => "a-comment" %>
+  <time class="hide date-js"><%= task.created_at.to_date %></time>
+  </div>
+  <p class="description text-center " ><%= task.description %></p>
+  <p class="info-task">
+    <span class="circle"></span> 
+    <span class="status"><%= task.status %></span>
+    
+    <span class="assignee">assignee: 
+      <span> <a href="#" class="a_form"><%=task.assignee %></a></span> 
+    </span>
+    <span class="created-by">created_by: 
+      <span> 
+        <a href="#"> Admin</a>  
+          
+        </span> 
+    </span>
+
+  </p> 
+ <div class="comment text-center">
+      <p>comments</p>
+
+  </div>
+<div class="cmtjs comment-close" style="opacity: 0">
+<%  @comment.each do |comment| %>
+  <% if comment.task_id == task.id %>
+     <p><strong><%= comment.name %></strong> : <%= comment.description %> </p>
+     <% else %>
+     
+  <% end %>
+  
+
+<% end %>
+
+ <%= link_to 'add comment', task_path(task) ,  :class => "a-comment-open" %>
+</div>
+
+
+  </div>
+ 
+  
+<% end %>

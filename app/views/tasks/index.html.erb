@@ -1,0 +1,5 @@
+<h1>Панель управления</h1>
+<% @task.each do |task| %>
+  <h3><%= task.subject %></h3>
+  <p><%= task.description %></p>
+<% end %>

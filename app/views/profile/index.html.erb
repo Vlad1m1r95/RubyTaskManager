@@ -1,0 +1,47 @@
+<%= render('template/header') %>
+
+<% if user_signed_in? %>
+  <div>Signed in as... <%= current_user.name %></div>
+<% end %>
+
+<section class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 col-sm-12">
+    
+    <% @task.each do |task| %>
+  <div class="block">
+  <div class="head-line">
+  <p class="header-titile"><span class="subject"><%= task.subject %></span><span class="time"><time><%= task.created_at.to_date.strftime("%d %B , %Y") %></time></span></p>
+  <%= link_to 'изменить', edit_task_path(task)%>
+  <time class="hide date-js"><%= task.created_at.to_date %></time>
+  </div>
+  <p class="description text-center " ><%= task.description %></p>
+  <p class="info-task">
+    <span class="circle"></span> 
+    <span class="status"><%= task.status %></span>
+    
+    <span class="assignee">assigne: 
+      <span> <a href="#" class="a_form"><%=task.assignee %></a></span> 
+    </span>
+    <span class="created-by">created_by: 
+      <span> 
+        <a href="#">Admin</a>  
+          
+        </span> 
+    </span>
+
+  </p> 
+ 
+
+  </div>
+ 
+  
+<% end %>
+    </div>
+  
+  </div>
+
+</section>
+
+

@@ -1,0 +1,76 @@
+
+<section class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="block">
+  <div class="head-line">
+  <p class="header-titile"><span class="subject"><%= @task.subject %></span><span class="time"><time><%= @task.created_at.to_date.strftime("%d %B , %Y") %></time></span></p>
+ 
+  <time class="hide date-js"><%= @task.created_at.to_date %></time>
+  </div>
+  <p class="description text-center " ><%= @task.description %></p>
+  <p class="info-task">
+    <span class="circle"></span> 
+    <span class="status"><%= @task.status %></span>
+    
+    <span class="assignee">assignee: 
+      <span> <a href="#" class="a_form"><%= @task.assignee %></a></span> 
+    </span>
+    <span class="created-by">created_by: 
+      <span> 
+        <a href="#"> Admin</a>  
+          
+        </span> 
+    </span>
+
+  </p> 
+ <div class="comment text-center">
+      
+  </div>
+ <h1>All Comment</h1>
+<% @task.comments.each do |comment| %>
+ <p><strong><%= comment.name %></strong> : <%= comment.description %> </p>
+<% end %>
+  <%= form_for([@task, @task.comments.build]) do |f| %>
+<div class="new-comment">
+      <h1 class="h3 mb-3 font-weight-normal">New comment</h1>
+   
+
+ 
+  <div class="form-label-group hide">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, required: true, class: 'form-control ', value: current_user.name  %>
+
+  </div>
+  
+
+ 
+  <div class="form-label-group">
+    <%= f.label :description %><br />
+    <%= f.text_area( :description , {class:"form-control"}) %>
+  </div>
+ 
+  
+  
+  
+
+
+<div class="actions">
+<%= f.submit("add comment", {class:"btn btn-lg btn-primary btn-block btn-ok"})%>
+
+</div>
+ </div>
+
+
+
+<% end %>
+
+  
+
+
+
+
+
+</div>
+</div>
+</section>

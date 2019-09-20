@@ -1,0 +1,74 @@
+<%= render('template/header') %>
+
+ <% if current_user.admin === true %>    
+<%= form_for :task, url: task_path(@task), method: :patch do  |f| %>
+
+<div class="text-center mb-4 form-center">
+      <h1 class="h3 mb-3 font-weight-normal">редактирование</h1>
+   
+
+ 
+  <div class="form-label-group">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject, class:"form-control" %>
+  </div>
+  
+
+ 
+  <div class="form-label-group">
+    <%= f.label :description %><br />
+    <%= f.text_area :description , class:"form-control" %>
+  </div>
+ 
+  <div class="form-label-group">
+    <%= f.label :assignee %><br />
+    <%= f.select :assignee , options_for_select(User.pluck(:name)), class:"form-control" %>
+  </div>
+  
+  <div class="form-label-group">
+    <%= f.label :status %><br />
+    <%= f.select :status, options_for_select([["To Do", "To Do"], "In Progress", "In Review", "Done"], { :class => 'form-control' }) %>
+  </div>
+  
+
+
+<div class="actions">
+<%= f.submit  "Edit task",   class:"btn btn-lg btn-primary btn-block"%>
+<%= link_to 'Удалить' ,  task_path(@task), method: :delete, data: {confirm: 'Вы уверены?'}  ,class:"btn btn-lg btn-primary btn-block"%>
+</div>
+ </div>
+<% end %>
+
+<% else %>
+<% if @task.status === "In Review" %>
+ <div class="text-center mb-4 form-center">
+ 
+   <p  style="margin-top: 100px">Пользователь не может менять статус "In Review"</p> 
+  <%= link_to 'Вернуться',  :back, class:"btn btn-lg btn-primary btn-block"%>
+  
+  </div>
+ 
+<% else %>
+<%= form_for :task, url: task_path(@task), method: :patch do  |f| %>
+<div class="text-center mb-4 form-center">
+
+     
+  
+    
+  
+ 
+  <div class="form-label-group">
+  <h1 class="h3 mb-3 font-weight-normal">изменить статус</h1>
+    <%= f.label :status %><br />
+    <%= f.select :status, options_for_select([["To Do", "To Do"], "In Progress", "In Review"],{ :class => 'form-control' })  %>
+  </div>
+
+
+<div class="actions">
+<%= f.submit  "изменить статус",   class:"btn btn-lg btn-primary btn-block"%>
+
+</div>
+ </div>
+<% end %>
+ <% end %>
+<% end %>

@@ -1,0 +1,52 @@
+<%= render('template/header') %>
+<% if current_user.admin === true %>
+<section class="container">
+<div class="row">
+<div class="col-lg-6 col-sm-12">
+ <div class="filter-task">
+ <form  id="filter-js">
+  <select id="status_select" value="">
+  <option value="To Do">To Do</option>
+  <option value="In Progress">In Progress</option>
+  <option value="In Review">In Review</option>
+  <option value="Done">Done</option>
+  </select>
+  <%= date_field(:task, :name) %>
+  
+   <select  class="form-control" id="assignee_select">
+   <% @task.each do |task| %>
+   <option value="<%=task.assignee %>"><%=task.assignee %></option>
+    <% end %>
+   </select>  
+ 
+ </div>
+ <button id="search-js" type= "submit">Search</button>
+ </form>
+
+
+</div>
+<div class="col-lg-6 col-sm-12">
+
+<%= render('template/admin/task') %>
+
+</div>
+</div>
+
+
+</section>
+
+
+<% else %>
+<section class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 col-sm-12">
+
+     <%= render('template/user/task') %>
+    </div>
+  
+  </div>
+
+</section>
+
+<% end %>
