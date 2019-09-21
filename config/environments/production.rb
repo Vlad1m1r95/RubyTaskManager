@@ -2,6 +2,14 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
+##custom routes code
+
+MyApp::Application.initialize!
+
+# Set the default host and port to be the same as Action Mailer.
+MyApp::Application.default_url_options = MyApp::Application.config.action_mailer.default_url_options
+##custom routes code
+
   config.cache_classes = true
 
   # Eager load code on boot. This eager loads most of Rails and
