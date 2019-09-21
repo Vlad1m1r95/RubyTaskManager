@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 devise_for :users, :controllers => {:registrations => "myregistrations"}
-root 'dashboard#index'
-
+ root 'dashboard#index'
+default_url_options host: Rails.application.config.domain
 
 resources :tasks do
   resources :comments

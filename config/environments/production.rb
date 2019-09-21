@@ -2,13 +2,14 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-##custom routes code
+# ##custom routes code
 
-MyApp::Application.initialize!
+# MyApp::Application.initialize!
 
-# Set the default host and port to be the same as Action Mailer.
-MyApp::Application.default_url_options = MyApp::Application.config.action_mailer.default_url_options
-##custom routes code
+# # Set the default host and port to be the same as Action Mailer.
+# MyApp::Application.default_url_options = MyApp::Application.config.action_mailer.default_url_options
+  config.domain = 'https://tranquil-chamber-87249.herokuapp.com'
+# ##custom routes code
 
   config.cache_classes = true
 

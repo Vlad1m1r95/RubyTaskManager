@@ -4,6 +4,16 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+# Initialize the rails application
+
+# ##custom routes code
+
+# MyApp::Application.initialize!
+
+# # Set the default host and port to be the same as Action Mailer.
+# MyApp::Application.default_url_options = MyApp::Application.config.action_mailer.default_url_options
+  config.domain = 'http://localhost:3000/'
+# ##custom routes code
   config.cache_classes = false
 
   # Do not eager load code on boot.
@@ -59,6 +69,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.default_url_options = { :host => 'https://tranquil-chamber-87249.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :letter_opener
 end
