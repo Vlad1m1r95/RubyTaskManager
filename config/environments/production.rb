@@ -8,7 +8,7 @@ Rails.application.configure do
 
 # # Set the default host and port to be the same as Action Mailer.
 # MyApp::Application.default_url_options = MyApp::Application.config.action_mailer.default_url_options
-  config.domain = 'https://tranquil-chamber-87249.herokuapp.com'
+config.domain = 'http://localhost:3000/'
 # ##custom routes code
 
   config.cache_classes = true
@@ -91,19 +91,8 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-  
-  ##custom config_mailer  
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => 'https://tranquil-chamber-87249.herokuapp.com' }
-ActionMailer::Base.smtp_settings = {
-  :address    => "smtp.sendgrid.net",
-  :port       => 25,
-  :user_name  => ENV['SENDGRID_USERNAME'],
-  :password   => ENV['SENDGRID_PASSWORD'],
-  :domain     => ENV['SENDGRID_DOMAIN'],
-  :authentication  => :plain
-  ##custom config_mailer 
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
